@@ -9,8 +9,7 @@ compose the mixins they need.
 import uuid
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, Boolean
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Column, DateTime, Boolean, Uuid
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
@@ -65,12 +64,12 @@ class UUIDPrimaryKeyMixin:
     """
     Mixin that adds a UUID primary key column.
 
-    Generates a UUID v4 as the default value. Uses PostgreSQL's native
-    UUID type for efficient storage and indexing.
+    Generates a UUID v4 as the default value. Uses SQLAlchemy's cross-database
+    Uuid type, stored natively where supported, or as a string/binary otherwise.
     """
 
     id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True),
+        Uuid(as_uuid=True),
         primary_key=True,
         default=uuid.uuid4,
         nullable=False,

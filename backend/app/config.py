@@ -33,7 +33,7 @@ class Settings(BaseSettings):
 
     # ── Database ─────────────────────────────────────────────────────────
     database_url: str = Field(
-        default="postgresql://postgres:postgres@localhost:5432/localization_engine"
+        default="mysql+pymysql://root:password@127.0.0.1:3306/localization_engine"
     )
     db_pool_size: int = Field(default=5)
     db_max_overflow: int = Field(default=10)
