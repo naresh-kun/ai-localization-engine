@@ -8,7 +8,7 @@
 
 ```
 backend/
-│
+│a
 ├── app/                                    # Application root package
 │   ├── __init__.py                         # Package initializer
 │   ├── main.py                             # FastAPI application factory and entry point
